@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{section.title}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding="true">
+ <!--     <button ion-button (click)="ShowFiles()">
+      Show Files
+    </button>
+
+    <button ion-button (click)="ClearFileList()">
+      Clear List
+    </button>
+  
+    <button ion-button (click)="ParseByClass()">
+      Parse
+    </button>
+    <br> 
+
+    <div *ngFor="let file of fileList">
+      
+      <div *ngIf="file.isDirectory">
+        Directory: {{file.name}}
+      </div>
+  
+      <div *ngIf="file.isFile" (click)="ShowHTML()">
+        <h2>File: {{file.name}}</h2>
+      </div>
+
+      <div *ngIf="file.isFile" (click)="RemoveFile(file)">
+        <h2>Delete: {{file.name}}</h2>
+      </div>
+    </div>
+    
+    <br>
+    {{section.url}}
+    <br>
+    
+     -->
+
+        <div *ngFor="let section of sectionList">
+          
+          <div *ngIf="!section.isHTML">
+            <ion-list>
+<!--            <button ion-button full (click)="showText(section)">  -->
+                <button ion-button full (click)="itemTapped($event, section)">    
+                  {{section.titleValue}}
+                </button>
+                <div *ngIf="section.showText">
+                  {{section.textValue}}
+                </div>
+         <!--       from: {{section.from}} | to: {{section.to}} -->
+            </ion-list>
+          </div>
+          <div *ngIf="section.isHTML">
+            <div [innerHtml]="section.textValue" ></div>
+          </div>
+        </div>
+ 
+  </ion-content>
+
+  <ion-footer>
+    <div style="background-color:whitesmoke">
+      {{networkStatus}}
+    </div>
+  </ion-footer>
+  
+<!--
+  <div style="position: absolute; bottom: 0px; width: 100%">
+    {{networkStatus}}
+  </div> -->
